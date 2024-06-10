@@ -1,0 +1,142 @@
+---
+import "../style/style.css";
+import "../layout/layout.css";
+import Header_card from "../components/header_card.astro";
+import Footer from "../components/footer.astro";
+import Banner from "../components/banner.astro";
+import Overskift from "../components/overskift.astro";
+import ProductCard from "../components/productCard.astro";
+import Tilbage_knap from "../components/tilbage_knap.astro";
+import Kurv from "../components/kurv.astro";
+import UndersideHeader from "../components/undersideHeader.astro";
+
+const data = await fetch(
+  "https://dmmsxgbleguwsrjxcdfh.supabase.co/rest/v1/ae_blomster?limit=12",
+  {
+    method: "GET",
+    headers: {
+      apikey:
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRtbXN4Z2JsZWd1d3NyanhjZGZoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTUzMjU0NjMsImV4cCI6MjAzMDkwMTQ2M30.EUV_DuoCBgYOjjmQ10T54Q80kiR6_fejdBF3RdWfbv8",
+    },
+  }
+).then((response) => response.json());
+---
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="https://use.typekit.net/heg3tgx.css" />
+    <link rel="icon" href="svg/logo.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Udvalg</title>
+  </head>
+  <body>
+    <header>
+      <Banner />
+      <div class="flex">
+        <a href="/#"><Tilbage_knap /></a>
+        <UndersideHeader />
+      </div>
+    </header>
+    <main>
+      <Overskift text="Udvalg" />
+
+      <div class="container">
+        <div id="filter-buttons">
+          <p>Filter:</p>
+          <div>
+            <button id="active" class="style">Alle produkter</button>
+            <butoon class="style">Buketter</butoon>
+            <butoon class="style">Planter og Blomster</butoon>
+            <butoon class="style">Vaser</butoon>
+          </div>
+        </div>
+      </div>
+
+      <section class="udvalg_grid">
+        {data.map((blomst) => <ProductCard data={blomst} loading="lazy" />)}
+      </section>
+    </main>
+    <footer class="footer"><Footer /></footer>
+  </body>
+  <style>
+    .udvalg_grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+
+      gap: 5%;
+      margin: 3%;
+    }
+    .container {
+      margin-right: 55px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .style {
+
+      .flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: var(--drak_green); 
+  border: none; 
+  color: white; 
+  padding: 3% 4%; 
+  text-align: center; 
+  text-decoration: none; 
+  display: inline-block; 
+  font-size: 16px; 
+  margin: 4px 2px; 
+  cursor: pointer; 
+  border-radius: 8px; 
+  transition-duration: 0.4s; 
+}
+
+    .style:hover {
+      border-color: var(--green);
+      background-color: rgba(155, 177, 125, 0.9);
+    }
+
+    #active {
+      background-color: var(--pink);
+    }
+
+    @media screen and (max-width: 1100px) {
+      .udvalg_grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 10px;
+      }
+    }
+    @media screen and (max-width: 700px) {
+      .overskrift {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .overskrift img {
+        margin-top: 20px;
+      }
+
+      .udvalg_grid {
+        display: block;
+        padding: 10px;
+      }
+      .container {
+        margin-left: 60px;
+        display: flex;
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</html>

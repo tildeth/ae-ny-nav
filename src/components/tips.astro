@@ -1,0 +1,104 @@
+---
+import "../style/style.css";
+const header = Astro.props.header;
+const text = Astro.props.text;
+const tpic = Astro.props.tpic;
+const fact1 = Astro.props.fact1;
+const fact2 = Astro.props.fact2;
+---
+
+<article class="t_card">
+  <div class="t_cardbox">
+    <img src={tpic} />
+    <div class="overlay">
+      <h6>Fun fact</h6>
+      <div class="texttips">
+      <p>{fact1}</p>
+      <p>{fact2}</p>
+      </div>
+    </div>
+  </div>
+  <div class="tiptextmain">
+  <h4>{header}</h4>
+  <p>{text}</p>
+  </div>
+</article>
+
+<style>
+  img {
+    width: 450px;
+    height: 450px;
+  }
+
+.tiptextmain{
+  max-width: 450px;
+}
+  .t_card {
+    display: flex;
+    flex-direction: column;
+    margin-left: 7%;
+    margin-right: 6%;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(251, 244, 220, 0.8);
+    color: var(--brown);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    font-size: 15px;
+  }
+  .texttips{
+    padding: 2%;
+  }
+
+  .overlay h6 {
+    font-size: 22px;
+    font-family: "hwt-arabesque", sans-serif;
+    margin-bottom: -5px;
+  }
+
+  .t_cardbox:hover .overlay {
+    opacity: 2;
+  }
+
+  .t_cardbox {
+    width: 450px;
+    height: 450px;
+    overflow: hidden;
+
+    position: relative;
+  }
+
+  @media screen and (max-width: 700px) {
+    img {
+      width: 350px;
+      height: 350px;
+    }
+    .tiptextmain{
+  max-width: 350px;
+}
+    p {
+      font-size: smaller;
+    }
+
+    .t_cardbox {
+      width: 350px;
+      height: 350px;
+      font-size: smaller;
+    }
+    .t_card {
+      margin-left: 3%;
+      margin-right: 4%;
+    }
+  }
+</style>

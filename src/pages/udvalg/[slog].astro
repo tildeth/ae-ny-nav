@@ -1,0 +1,229 @@
+---
+import "../../style/style.css";
+
+import Kurv from "../../components/kurv.astro"
+import Header_card from "../../components/header_card.astro";
+import Footer from "../../components/footer.astro";
+import Banner from "../../components/banner.astro";
+import TilbageKnap from "../../components/tilbage_knap.astro";
+import Levering from "../../components/levering.astro";
+import UndersideHeader from "../../components/undersideHeader.astro";
+
+
+export async function getStaticPaths() {
+  const data = await fetch(
+    "https://dmmsxgbleguwsrjxcdfh.supabase.co/rest/v1/ae_blomster",
+    {
+      method: "GET",
+      headers: {
+        apikey:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRtbXN4Z2JsZWd1d3NyanhjZGZoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTUzMjU0NjMsImV4cCI6MjAzMDkwMTQ2M30.EUV_DuoCBgYOjjmQ10T54Q80kiR6_fejdBF3RdWfbv8",
+      },
+    }
+  ).then((response) => response.json());
+
+  return data.map((single) => {
+    return {
+      params: { slog: single.slog },
+      props: { single },
+    };
+  });
+}
+
+const { single } = Astro.props;
+
+---
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="https://use.typekit.net/heg3tgx.css" />
+    <link rel="icon" href="svg/logo.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Udvalg</title>
+  </head>
+
+  <header>
+    <Banner />
+    <div class="flex">
+    <a href="/udvalg"><TilbageKnap /></a>
+    <UndersideHeader />
+  </div>
+  </header>
+  <!-- <Overskift /> -->
+  <article class="product-container">
+    <img src={single.billede} alt="billede" />
+    <div class="textbox_single">
+
+      <h3>{single.produktnavn}</h3>
+      <div class="textbox2">
+        <p class="bold">Pris</p>
+        <p class="bold">Farver</p>
+        <p>{single.pris},-</p>
+        <p>{single.farver}</p>
+      </div>
+      <div class="tekst">
+      <p class="bold">Beskrivelse</p>
+      <p>{single.beskrivelse}</p>
+      <button class="kurv" id="addToCartButton">
+        <h5>Læg i kurv (1)</h5>
+      </button>
+    </div>
+  </div>
+</article>
+
+  <div id="kurvContainer" style="display: none;">
+
+    <Kurv k_navn={single.produktnavn} k_img={single.billede} k_pris={single.pris} /></div>
+  <Levering />
+  <Footer />
+
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+        const addToCartButton = document.getElementById('addToCartButton');
+        const kurvContainer = document.getElementById('kurvContainer');
+
+        addToCartButton.addEventListener('click', function() {
+            kurvContainer.style.display = 'block';
+        });
+    });
+
+</script>
+
+  <style>
+
+    .flex{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-top: 50px;
+      align-self: start;
+      margin-top: 50px;
+      align-self: stretch;
+    }
+
+  .bold {
+    font-weight: bold;
+  }
+
+    .product-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin: 5%;
+      gap: 5%;
+      align-items: stretch;
+    }
+    .textbox2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      line-height: 0.5;
+    }
+
+
+    .hide{
+    display: none;
+  }
+    .tekst {
+      line-height: 1.5;
+    }
+
+.kurv {
+  margin-top: 40px;
+  color: var(--white);
+  background-color: var(--drak_green);
+  border: none;
+  border-radius: 5px;
+  padding: 5px 40px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+
+}
+
+.kurv:hover {
+  background-color: rgba(155, 177, 125, 0.9);
+}
+
+.textbox_single {
+      border: 1px solid var(--drak_green);
+    padding: 5%;
+    align-self: start;
+    margin-top: 50px;
+    align-self: stretch;
+    }
+
+
+    @media screen and (max-width: 900px) {
+
+      .product-container {
+    grid-template-columns: 1fr;
+  }
+
+  .textbox_single {
+    align-items: flex-start;
+    border: 1px solid var(--drak_green);
+    padding: 5%;
+    }
+
+  .textbox2 {
+    margin-bottom: 20px;
+    line-height: 0;
+  }
+
+  .row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .row p {
+    margin: 0;
+    padding: 4px 0;
+  }
+
+  .bold {
+    width: 100%;
+  }
+
+
+  img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-top: 20px;
+      margin-bottom: -40px;
+    }
+
+    .kurv {
+  display: flex; 
+  justify-content: flex-start; 
+  align-items: left; 
+  text-align: center;
+  padding: 10px 20px; 
+  white-space: nowrap;
+  margin-left: 10px;
+}
+
+  }
+
+  </style>
+
+<script>
+
+   document.addEventListener('DOMContentLoaded', function() {
+        const addToCartButton = document.getElementById('addToCartButton');
+        const kurvContainer = document.getElementById('kurvContainer');
+
+        addToCartButton.addEventListener('click', function() {
+            kurvContainer.style.display = 'block';
+        });
+    });
+</script>

@@ -1,0 +1,46 @@
+---
+const { ipic, text } = Astro.props;
+---
+
+<div class="card">
+  <div class="inspi_box">
+  <img src={ipic} />
+  </div>
+  <p>{text}</p>
+</div>
+
+<style>
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .card {
+    margin-left: 7%;
+    margin-right: 6%;
+  }
+
+  .inspi_box{
+    width: 450px;
+    height: 450px;
+    overflow: hidden;
+  }
+  @media screen and (max-width: 700px) {
+    img {
+      display: block;
+    width: 100%;
+    height: auto;
+    }
+
+    .card {
+      margin-left: 3%;
+      margin-right: 4%;
+    }
+
+      .inspi_box{
+        width: 350px;
+      height: 350px;
+    overflow: hidden;
+  }
+  }
+</style>

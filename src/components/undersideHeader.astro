@@ -1,0 +1,149 @@
+---
+import "../style/style.css";
+import Tilbage_knap from "../components/tilbage_knap.astro";
+---
+  
+  <section class="flex-container">
+    <nav class="nav-container">
+      <div class="burger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+      <div class="menu">
+        <ol>
+          <li><a href="/udvalg">Udvalg</a></li>
+          <li><a href="/about">Om os</a></li>
+        </ol>
+      </div>
+    </nav>
+    <div class="icons">
+      <img src="../img/Person.svg" alt="person ikon" />
+      <img src="../img/Shopping Cart.svg" alt="shopping cart ikon" />
+    </div>
+  </section>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const burger = document.querySelector(".burger");
+      const menu = document.querySelector(".menu");
+      const links = document.querySelectorAll(".menu li a");
+  
+      burger.addEventListener("click", () => {
+        burger.classList.toggle("active");
+        menu.classList.toggle("active");
+      });
+  
+      links.forEach((link) => {
+        link.addEventListener("click", () => {
+          burger.classList.remove("active");
+          menu.classList.remove("active");
+        });
+      });
+    });
+  </script>
+  
+  <style>
+    .flex-container {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 20px;
+      padding: 10px;
+      margin: 0;
+      /* opacity: 0.7;
+      background-color: var(--white); */
+    }
+  
+    .nav-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+  
+    .burger {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+  
+    .line {
+      width: 30px;
+      height: 3px;
+      background-color: var(--brown);
+    }
+  
+    .burger.active .line:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+      transition: 0.2s linear;
+    }
+  
+    .burger.active .line:nth-child(2) {
+      opacity: 0;
+      transition: 0.15s linear;
+    }
+  
+    .burger.active .line:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+      transition: 0.2s linear;
+    }
+  
+    .menu {
+      display: none;
+    }
+  
+    .menu.active {
+      display: block;
+    }
+  
+    .icons {
+      display: flex;
+      gap: 20px;
+    }
+  
+    li {
+      list-style: none;
+      z-index: 2;
+    
+    }
+  
+    ol {
+      opacity: 0.7;
+      background-color: var(--white);
+      z-index: 1;
+      padding: 10px;
+    }
+  
+    img {
+      width: 40px;
+      height: 40px;
+    }
+  
+    a {
+      text-decoration: none;
+      color: var(--brown);
+      font-size: 25px;
+      line-height: 1.5;
+    }
+  
+    a:hover {
+      color: var(--pink);
+    }
+  
+    img.blomst {
+          width: 100%;
+          height: 100vh;
+          object-fit: cover;
+          z-index: 1;
+          opacity: 0.4;
+      }
+  
+      h1 {
+          top: -10%;
+          left: 50%;
+          transform: translateX(-50%);
+          text-align: center;
+      }
+  
+  

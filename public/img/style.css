@@ -1,0 +1,33 @@
+:root {
+    --sand: #FBF7EB;
+    --green: #9BB17D;
+    --pink: #D7709D;
+    --brown: #342015;
+    --white: #F1F1F3;
+  }
+
+  @font-face {
+    font-family:"hwt-arabesque", sans-serif ;
+    font-weight: 400;
+  font-style: normal;
+    src: url();
+  }
+
+body{
+    background-color: var(--sand);
+}
+
+  h1{
+    font-family: "hwt-arabesque";
+    color: var(--brown);
+  }
+  h2{
+    font-family: "hwt-arabesque";
+    color: var(--pink);
+    font-size: xx-large;
+  }
+
+  p{
+    font-family: "Yaldevi", sans-serif;
+    color: var(--brown);
+  }

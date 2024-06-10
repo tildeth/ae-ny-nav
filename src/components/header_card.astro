@@ -1,0 +1,224 @@
+---
+import "../style/style.css";
+---
+
+<body>
+    <img class="blomst" src="../img/hortensia.jpeg" alt="hortensia">
+    <h1>Anna Elisabeth</h1>
+    <h3>~ since 2022 ~</h3>
+    <nav class="nav-container">
+        
+        <div class="menu">
+            <ol>
+                <li><a href="/udvalg">Udvalg</a></li>
+                <li><a href="/about">Om os</a></li>
+            </ol>
+            <ul>
+                <div>
+                    <img src="../img/Person.svg" alt="person ikon">
+                    <li><a href="#">Konto</a></li>
+                </div>
+                <div>
+                    <img src="../img/Shopping Cart.svg" alt="shopping cart ikon">
+                    <li><a href="#">Kurv</a></li>
+                </div>
+            </ul>
+        </div>
+        <div class="burger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </nav>
+    
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const burger = document.querySelector(".burger");
+        const menu = document.querySelector(".menu");
+        const links = document.querySelectorAll(".menu li a");
+
+        burger.addEventListener("click", () => {
+            burger.classList.toggle("active");
+            menu.classList.toggle("active");
+        });
+
+        links.forEach((link) => {
+            link.addEventListener("click", () => {
+                burger.classList.remove("active");
+                menu.classList.remove("active");
+            });
+        });
+    });
+</script>
+</body>
+
+<style>
+    section {
+        position: relative;
+        align-items: center;
+    }
+    img.blomst {
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+        z-index: 1;
+        opacity: 0.4;
+    }
+
+    ul img {
+        width: 40px;
+        height: 40px;
+        z-index: 2;
+        list-style: none;
+    }
+    ul {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+    ul div {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 0;
+        padding: 10px;
+        margin: 0;
+    }
+    .nav-container, h1, h3 {
+        position: absolute;
+        z-index: 2;
+        left: 50%;
+        transform: translateX(-50%);
+        gap: 50px;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: row;
+        opacity: 0.7;
+        background-color: var(--white);
+        border-radius: 15px;
+        align-items: center;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    h1 {
+        top: 0%;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+    }
+    h3 {
+        top: 55%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .nav-container {
+        top: 75%;
+        left: 50%;
+        transform: translateX(-50%);
+        overflow: hidden;
+        padding: 5px;
+        margin: 0;
+    }
+    
+    ol {
+        list-style: none;
+        z-index: 2;
+        display: flex;
+        gap: 50px;
+        white-space: nowrap;
+    }
+    a {
+        text-decoration: none;
+        color: var(--brown);
+        font-size: 30px;
+    }
+    a:hover {
+    color: var(--pink);
+}
+
+    /* her starter burgermenu styling */
+
+    .menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+    .burger {
+        width: 30px;
+        height: 20px;
+        cursor: pointer;
+    }
+
+    .burger .line {
+        width: 100%;
+        height: 2px;
+        background-color: #333;
+        margin-bottom: 5px;
+        transition: 0.2s linear;
+    }
+    .burger {
+        display: none;
+    }
+
+    @media screen and (max-width: 800px) {
+        .menu {
+            display: none;
+        } 
+        .burger {
+            display: block;
+            margin: 15%;
+            border-radius: 0;
+        }
+        .menu.active {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .burger.active .line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+            transition: 0.2s linear;
+        }
+
+        .burger.active .line:nth-child(2) {
+            opacity: 0;
+            transition: 0.15s linear;
+        }
+
+        .burger.active .line:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+            transition: 0.2s linear;
+        }
+
+        h1{
+        font-size: 90px;
+        top: 10%;
+        }
+        h3 {
+        font-size: 35px;
+        top: 50%;
+    }
+
+    a{
+        font-size: 20px;
+    }
+
+    ul img {
+        width: 20px;
+        height: 20px;
+    }
+    .nav-container {
+        top: 75%;
+        left: 50%;
+        transform: translateX(-50%);
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+    }
+    }
+</style>

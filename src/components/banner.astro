@@ -1,0 +1,61 @@
+---
+import "../style/style.css";
+---
+
+<div class="banner">
+  <div class="motion-wrap">
+    <ul class="motion">
+      <li>Bestil inden kl. 16- og få gratis levering idag.</li>
+      <li>Få 10% studierabat</li>
+      <li>Gratis fragt</li>
+      <li>Bestil inden kl. 16- og få gratis levering idag.</li>
+      <li>Få 10% studierabat</li>
+      <li>Gratis fragt</li>
+      <li>Bestil inden kl. 16- og få gratis levering idag.</li>
+      <li>Få 10% studierabat</li>
+      <li>Gratis fragt</li>
+      <li>Bestil inden kl. 16- og få gratis levering idag.</li>
+      <li>Få 10% studierabat</li>
+      <li>Gratis fragt</li>
+    </ul>
+  </div>
+</div>
+
+<style>
+  .banner {
+    width: 100%;
+    overflow: hidden;
+    padding: 10px 0;
+    background-color: #9bb17d;
+    font-family: "yaldevi", sans-serif;
+  }
+
+  .motion-wrap {
+    display: flex;
+    flex-wrap: nowrap;
+    animation: motion 40s linear infinite;
+  }
+
+  .motion {
+    display: flex;
+    flex-wrap: nowrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .motion li {
+    display: inline-block;
+    padding-right: 350px;
+    white-space: nowrap;
+  }
+
+  @keyframes motion {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+</style>

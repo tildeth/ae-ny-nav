@@ -1,16 +1,132 @@
 ---
-
+import "../style/style.css";
+import "../layout/layout.css";
+import Header_card from "../components/header_card.astro";
+import Footer from "../components/footer.astro";
+import Banner from "../components/banner.astro";
+import Overskift from "../components/overskift.astro";
+import Tips from "../components/tips.astro";
+import Inspi_card from "../components/inspi_card.astro";
+import Kurv from "../components/kurv.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="https://use.typekit.net/heg3tgx.css" />
+  <link rel="icon" href="svg/logo.svg" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="generator" content={Astro.generator} />
+  <title>AE</title>
+</head>
+
+<body>
+  <header>
+    <Banner />
+    <Header_card />
+  </header>
+  <main>
+    <div class="o1">
+      <Overskift text="Inspiration" />
+    </div>
+
+    <div class="e1">
+      <p class="extra_t">
+        Vil du lærer at binde en buket, lave blomsterkranse mm. Så se vores
+        arrangementer <a class="link" href="/udvalg">her</a>
+      </p>
+    </div>
+
+    <article >
+      <div class="grid_1_1">
+      <Inspi_card
+        text="Forårets farvebombe - Blomst navn"
+        ipic="/img/blom2.avif"
+      />
+      <Inspi_card text="Dagens buket- Veronica" ipic="/img/blom3.avif" />
+      <Inspi_card
+        text="Frosted vase - Nyeste keramik"
+        ipic="/img/vaser.avif"
+      />
+      <Inspi_card
+        text="Sødt og stikkende - De bedste kaktusser"
+        ipic="/img/kak1.avif"
+      />
+      </div>
+        <p class="extra_t">
+          Find mere af vores udvalg <a class="link" href="/udvalg"> her</a>
+        </p>
+    </article>
+    
+
+    <Overskift text="Tips" />
+
+      <p class="extra_t">Hold musen over billedet for fun-fact:</p>
+
+    <article class="grid_1_1">
+      <div>
+        <Tips
+          header="Blomster i isterninger:"
+          text="At tørre blomster er en enkel proces, der bevarer deres skønhed i lang tid. Start med at vælge friske blomster med stærke stængler. Bind dem sammen i små bundter og hæng dem op ned et varmt og tørt sted, gerne med god luftcirkulation. Efter et par uger vil blomsterne være tørre og klar til brug. Du kan bruge dem til dekoration, potpourri eller endda i badebomber for at tilføje en smuk og naturlig duftoplevelse."
+          tpic="../../img/istern.avif"
+          alt="Isterninger med blosmter"
+          fact1="Vidste du, at roser faktisk er spiselige? Mange tror, at roser kun er til pynt, men faktisk kan næsten alle roser spises, dog med varierende smag alt efter sorten. De har en fin og delikat smag, der kan bruges til at give en subtil rosearoma til mad og drikke. Det er en helt ny måde at nyde disse smukke blomster på!"
+          fact2="For festlige blomsteristerninger, brug spiselige blomster som violer, lavendel, kamille, rosenblade, nelliker, borago eller morgenfruer."
+        />
+        <Tips
+          header="Eukalytus i badet:"
+          text="At tilføje eukalyptus i dine badebomber er en dejlig måde at skabe en forfriskende og beroligende spa-lignende oplevelse derhjemme. Du kan lægge et par eukalyptusblade i bunden af din badebombeform, hæld forsigtigt din blanding ovenpå og lad det størkne. Når du tager et bad med disse badebomber, vil dampen frigive den behagelige aroma af eukalyptus, der hjælper med at lindre stress og berolige sindet."
+          tpic="../../img/e_lyptus.avif"
+          alt="Eukalyptus i badet"
+          fact1="Eualytups er så gode til at bevare balance, at de kunne gå på en stram line og jonglere med frugt, mens de resiterer pi til hundrede decimaler – alt imens de jonglerer med flere forskellige bolde! Okay, det er måske en lille smule overdrevet, men de er virkelig gode til at balancere, især når de er i flok."
+          fact2="Køb friske eukalyptusgrene. Kan fås her"
+        />
+      </div>
+      <div>
+        <Tips
+          header="Lær at tørre dine blomster:"
+          text="At tørre blomster er en enkel proces, der bevarer deres skønhed i lang tid. Start med at vælge friske blomster med stærke stængler. Bind dem sammen i små bundter og hæng dem op ned et varmt og tørt sted, gerne med god luftcirkulation. Efter et par uger vil blomsterne være tørre og klar til brug. Du kan bruge dem til dekoration, potpourri eller endda i badebomber for at tilføje en smuk og naturlig duftoplevelse."
+          tpic="../../img/tbuket.avif"
+          alt="Tørret blomster"
+          fact1="Tørrede blomster har været brugt i årtusinder til både medicinske og dekorative formål. I oldtiden brugte forskellige kulturer tørrede blomster til at lave urtemedicin og te, da de troede på deres helbredende egenskaber. Disse blomster blev også brugt til at lave duftende poser, der blev lagt i skabe eller sengelinned for at holde dem friske og duftende. Så tørrede blomster har en lang historie med at være både nyttige og smukke!"
+          fact2="Vælg friske blomster som roser, lavendel, gypsophila, og statice."
+        />
+        <Tips
+          header="Lær at binde din egen blomsterkrans:"
+          text="At lave blomsterkranse er en sjov og kreativ aktivitet, der tilføjer et strejf af natur til ethvert outfit. Start med at vælge friske blomster med stærke stængler og bøjelige grene. Bind derefter blomsterne sammen i små bundter med blomstertråd eller snor. Form disse bundter til en cirkel og bind enderne sammen. Du kan også tilføje grønne blade eller andre dekorative elementer efter ønske. Når kranse er færdige, har du en smuk og naturlig accessorie, perfekt til sommerfestivaler, bryllupper eller en tur i parken."
+          tpic="../../img/krans.avif"
+          alt="Blomsterkrans"
+          fact1="For at forlænge holdbarheden af friske blomster - de elsker sødt! Derfor kan du tilføje sukker til vandet for at give blomsterne en energikilde eller tilføje lidt eddike for at hæmme bakterievækst. En anden måde er at skære stænglerne under vand for at forhindre luft i at komme ind i stænglerne, hvilket kan blokere vandoptagelsen. I gamle dage lagde man en kobbermønt i, og mente at det forlængende blomsternes levetid."
+          fact2="For en blomsterkrans, brug friske blomster som roser, lavendel, tusindfryd, og eukalyptus"
+        />
+      </div>
+    </article>
+  </main>
+  <footer>
+    <Footer />
+  </footer>
+</body>
+
+<style>
+  .grid_1_1 {
+    line-height: 2.1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+
+  justify-items: center;
+  }
+
+  @media screen and (max-width: 900px) {
+  .grid_1_1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    justify-content: end;
+  }
+ 
+}
+
+
+</style>

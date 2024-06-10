@@ -1,0 +1,193 @@
+---
+import "../style/style.css";
+const k_navn = Astro.props.k_navn;
+const k_img = Astro.props.k_img;
+const k_pris = Astro.props.k_pris;
+
+---
+<div class="popup">
+<div class="box">
+    <span class="close-btn">&times;</span>
+<section class="first">
+<h1>Tilføjet til kurven</h1>
+<img src="/img/stregen2.webp" alt="">
+</section>
+
+<section class="secound">
+    <div>
+    <img src={k_img} alt="billede">
+    <p class="bold">{k_navn}</p>
+    <p>Pris: {k_pris} kr.</p>
+</div>
+</section>
+
+<section class="third">
+    <button class="kurv">
+        <h5>Gå til kurv (1)</h5>
+        <img src="" alt="">
+    </button>
+    <button class="shop">
+        <a href="/udvalg">Shop mere</a>
+    </button>
+</section>
+<p class="bestil">Bestil inden kl. 16 - og få dem leveret i dag.</p>
+</div>
+</div>
+
+
+<style>
+
+.popup {
+    position: fixed;
+    top: 45%; /* Placer pop-up'en vertikalt midt på skærmen */
+    left: 50%; /* Placer pop-up'en horisontalt midt på skærmen */
+    transform: translate(-50%, -50%); /* Juster placeringen til midten af skærmen */
+    z-index: 999; /* Sørg for, at pop-up'en vises foran alt andet indhold */
+    padding: 20px; /* Tilføj indre afstand til pop-up'en */
+    background-color: var(--sand);
+    border: 1px solid black;
+}
+
+.box {
+    width: 20%;
+    display: inline-block;
+
+    padding: -10px;
+    width: fit-content;
+    text-align: center;
+}
+
+.first {
+    text-align: center; 
+    padding: 20px;
+}
+
+.first h1 {
+    font-size: 30px; 
+    margin: 20px; 
+}
+
+.first img {
+    display: block;
+    margin: 0 auto; 
+    max-width: 100%; 
+}
+
+.bold {
+    font-weight: bold;
+}
+
+
+
+.secound {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 40px; 
+    margin: 10px;
+    background-color: var(--green);
+}
+
+.secound img {
+    border-radius: 50%;
+    width: 150px; 
+    height: 150px; 
+    margin-right: 20px; 
+}
+
+.secound p {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.third {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    align-items: center;
+    padding: 10px;
+}
+
+.third button {
+    width: 48%;
+    max-width: 400px; 
+    padding: 15px 20px; 
+    border: none; 
+    border-radius: 25px; 
+
+    cursor: pointer; /
+    font-size: 18px; 
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tilføjer skygge bag knapperne */
+    transition: box-shadow 0.3s ease;
+}
+
+.third button:hover {
+    color: var(--pink);
+}
+a:hover {
+    color: var(--pink);
+}
+.kurv {
+    color: var(--white);
+    background-color: var(--drak_green);
+    border-radius: 20%;
+    width: 100px;
+    height: 80px;
+}
+
+.shop {
+    background-color: var(--white); 
+    border-radius: 20%;
+    width: 80px;
+    height: 80px;
+}
+
+a{
+    color: var(  --drak_green);
+}
+
+.bestil {
+    font-size: 12px;
+    color: var(--pink);
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+@media only screen and (min-width: 768px) {
+    .popup {
+    position: fixed;
+    top: 50%; /* Placer pop-up'en vertikalt midt på skærmen */
+    left: 70%; /* Placer pop-up'en horisontalt midt på skærmen */
+    transform: translate(-50%, -50%); /* Juster placeringen til midten af skærmen */
+    z-index: 999; /* Sørg for, at pop-up'en vises foran alt andet indhold */
+    padding: 0; /* Tilføj indre afstand til pop-up'en */
+    background-color: var(--sand);
+    border: 1px solid black;
+    width: 30%;
+}
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Find lukkeknappen
+    var closeBtn = document.querySelector('.close-btn') as HTMLElement;
+    
+    // Tilføj klikhændelseslytter til lukkeknappen
+    closeBtn.addEventListener('click', function() {
+        // Find pop-up-containeren
+        var popup = document.querySelector('.popup') as HTMLElement;
+        // Skjul pop-up'en
+        popup.style.display = 'none';
+    });
+});
+
+</script>

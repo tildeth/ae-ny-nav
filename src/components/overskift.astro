@@ -1,0 +1,48 @@
+---
+const { text } = Astro.props;
+---
+
+<div class="header">
+  <h2>{text}</h2>
+  <img src="/img/streg.svg" alt="" />
+</div>
+
+<style>
+  .header {
+    display: flex; /* Brug flex layout */
+    align-items: center; /* Centrer indhold lodret */
+    padding-left: 50px;
+    margin-top: 20px;
+  }
+
+  .header h2 {
+font-size: 30px;
+    margin: 2%; /* Fjern standard margin */
+  }
+
+   img {
+    max-width: 90%; /* Automatisk bredde */
+    height: 30px; /* Fast højde, juster som nødvendigt */
+    flex-grow: 1; /* Tillad billedet at fylde den resterende bredde */
+     object-fit: cover; /* Sikrer at billedet bevarer sit forhold */ 
+  }
+
+  @media screen and (max-width: 700px) {
+    .header {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    h2 {
+      font-size: x-large;
+    }
+    .header img {
+      margin-top: 20px;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+</style>
