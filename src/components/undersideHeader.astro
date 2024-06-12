@@ -1,15 +1,29 @@
 ---
 import "../style/style.css";
-import Tilbage_knap from "../components/tilbage_knap.astro";
 ---
   
   <section class="nav-flex">
     <a href="/#">
-    <img class="logo_head" src="../../public/img/logo.png" alt=""></div>
+    <img class="logo_head" src="/img/logo.png" alt=""></div>
     </a>
-    <nav class="nav-container">
-        <a href="/udvalg">Udvalg</a>
-        <a href="/about">Om os</a>
+    <nav class="nav-container-ny">
+      <div class="flex-container">
+        <nav class="nav-container">
+          <div class="burger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="menu">
+            <ol>
+              <li><a href="/udvalg">Udvalg</a></li>
+              <li><a href="/about">Om os</a></li>
+            </ol>
+          </div>
+        </nav>
+      </div>
+        <a class="bur_head" href="/udvalg">Udvalg</a>
+        <a class="bur_head" href="/about">Om os</a>
         <img src="../img/Person.svg" alt="person ikon" />
       <img src="../img/Shopping Cart.svg" alt="shopping cart ikon" />
     </nav>
@@ -26,7 +40,7 @@ import Tilbage_knap from "../components/tilbage_knap.astro";
       justify-content: space-between;
     }
 
-    .nav-container{
+    .nav-container-ny{
       display: flex;
       align-items: center;
       gap: 20px;
@@ -52,8 +66,86 @@ color: #f1f1f3;
     aspect-ratio: 1/1;
     width: 25%;
   }
+.menu{
+  display: none;
+}
+
+  @media screen and (max-width: 700px){
+    .bur_head{
+      display: none;
+    }
+
+    .nav-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+  
+    .burger {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+  
+    .line {
+      width: 30px;
+      height: 3px;
+      background-color: var(--brown);
+    }
+  
+    .burger.active .line:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+      transition: 0.2s linear;
+    }
+  
+    .burger.active .line:nth-child(2) {
+      opacity: 0;
+      transition: 0.15s linear;
+    }
+  
+    .burger.active .line:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+      transition: 0.2s linear;
+    }
+  
+    .menu {
+      display: none;
+    }
+  
+    .menu.active {
+      display: block;
+    }
+
+    li {
+      list-style: none;
+      z-index: 2;
+    
+    }
+  
+
+  }
   </style>
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const burger = document.querySelector(".burger");
+    const menu = document.querySelector(".menu");
+    const links = document.querySelectorAll(".menu li a");
+
+    burger.addEventListener("click", () => {
+      burger.classList.toggle("active");
+      menu.classList.toggle("active");
+    });
+
+    links.forEach((link) => {
+      link.addEventListener("click", () => {
+        burger.classList.remove("active");
+        menu.classList.remove("active");
+      });
+    });
+  });
+</script>
 
   
   
